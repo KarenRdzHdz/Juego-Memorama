@@ -26,6 +26,7 @@ from freegames import path
 
 car = path('car.gif')
 tiles = list(range(32)) * 2
+counter = 0
 state = {'mark': None}
 hide = [True] * 64
 comprobar = [False] * 64
@@ -59,6 +60,9 @@ def tap(x, y):
     spot = index(x, y)
     mark = state['mark']
     cond = True
+    global counter
+    counter += 1                                                    # ***Exercise 1: count and print taps***
+    print("Clicks: " + str(counter))
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
