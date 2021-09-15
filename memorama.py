@@ -30,7 +30,7 @@ tiles = list(range(8)) * 2
 counter = 0
 
 state = {'mark': None}
-comprobar = [False] * 64
+comprobar = [False] * 16
 hide = [True] * 16
 
 
@@ -71,7 +71,7 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
-    for count in range(64):
+    for count in range(16):
         if hide[count] != comprobar[count]:
             cond = False
     if cond:
