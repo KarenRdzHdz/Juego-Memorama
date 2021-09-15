@@ -28,6 +28,7 @@ car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
+comprobar = [False] * 64
 
 
 def square(x, y):
@@ -57,13 +58,18 @@ def tap(x, y):
     "Update mark and hidden tiles based on tap."
     spot = index(x, y)
     mark = state['mark']
-
+    cond = True
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+    for count in range(64):
+        if hide[count] != comprobar[count]:
+            cond = False
+    if cond:
+        print("Juego acabado. Felicidades!")
 
 
 def draw():
