@@ -27,7 +27,7 @@ from freegames import path
 car = path('car.gif')
 
 tiles = list(range(8)) * 2
-tilesB = ['A', 'B', 'C', 'D', 'E', 'F', 'G','H', ] * 2
+tilesB = ['A', 'B', 'C', 'D', 'E', 'F', 'G','H', ] * 2       # ***Exercise 5: letters instead of tiles***
 counter = 0
 
 state = {'mark': None}
