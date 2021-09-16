@@ -27,7 +27,7 @@ from freegames import path
 car = path('car.gif')
 
 tiles = list(range(8)) * 2
-#tilesB = ['A', 'B', 'C', 'D', 'E', 'F', 'G','H']
+tilesB = ['A', 'B', 'C', 'D', 'E', 'F', 'G','H', ] * 2
 counter = 0
 
 state = {'mark': None}
@@ -48,7 +48,7 @@ def square(x, y):
     end_fill()
 
 #Coordenadas de xy se asocian a un index de tiles
-def index(x, y):
+def index(x, y):                                                 # ***Exercise 2: decrease to a 4x4 grid***
     "Convert (x, y) coordinates to tiles index."
     return int((x + 200) // 100 + ((y + 200) // 100) * 4)
 
@@ -67,7 +67,7 @@ def tap(x, y):
     counter += 1                                                    # ***Exercise 1: count and print taps***
     print("Clicks: " + str(counter))
     # Checar correspondencia para revelar
-    if mark is None or mark == spot or tiles[mark] != tiles[spot]:
+    if mark is None or mark == spot or tilesB[mark] != tilesB[spot]:
         state['mark'] = spot
         
     else:
@@ -78,8 +78,8 @@ def tap(x, y):
         if hide[count] != comprobar[count]:
             cond = False
     if cond:
-        print("Juego acabado. Felicidades!")
-
+        print("Juego acabado. Felicidades!")                 # ***Exercise 3: all tiles are revealed***
+        
 # Dibuja el fondo y hace visibles las tiles
 def draw():
     "Draw image and tiles."
@@ -92,25 +92,21 @@ def draw():
         if hide[count]:
             x, y = xy(count)
             square(x, y)
-            
-    
+              
     mark = state['mark']
     
-    
-
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
         goto(x + 2, y)
         color('black')
-        write((str(tiles[mark]).center(6)), font=('Arial', 34, 'normal'))
+        write((str(tilesB[mark]).center(6)), font=('Arial', 34, 'normal'))        # ***Exercise 4: center the number on tiles***
         
-
     update()
     ontimer(draw, 50)
 
 
-shuffle(tiles)
+shuffle(tilesB)
 setup(420, 420, 370, 0)
 addshape(car)
 hideturtle()
