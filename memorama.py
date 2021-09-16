@@ -100,7 +100,7 @@ def draw():
         up()
         goto(x + 2, y)
         color('black')
-        write((str(tilesB[mark]).center(6)), font=('Arial', 34, 'normal'))        # ***Exercise 4: center the number on tiles***
+        write((str(tilesB[mark]).center(3)), font=('Arial', 50, 'normal'))        # ***Exercise 4: center the number on tiles***
         
     update()
     ontimer(draw, 50)
